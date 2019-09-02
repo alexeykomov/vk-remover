@@ -1,0 +1,23 @@
+{
+  "name": "vk-remover",
+  "version": "0.0.1",
+  "description": "utility to remove subscribers and outgoing requests",
+  "main": "",
+  "directories": {
+  },
+  "private": true,
+  "scripts": {
+    "build": "jade index.jade & lessc --clean-css less/all.less css/all.css"
+  },
+  "keywords": [
+    "homepage"
+  ],
+  "author": [
+    "alexeykcontact@gmail.com (Alex K)"
+  ],
+  "license": "commercial",
+  "devDependencies": {
+  },
+  "dependencies": {
+  }
+}
