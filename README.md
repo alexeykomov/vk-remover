@@ -1,4 +1,4 @@
-Alexey Komov's home page
+Vk remover
 =============
 
-It's just that.
+Utility to remove subscribers and outgoing requests.
