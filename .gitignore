@@ -5,8 +5,10 @@
 
 # Intellij
 .idea/
+.idea/workspace.xml
 *.iml
 *.iws
+dump.rdb
 
 # Mac
 .DS_Store
@@ -22,6 +24,4 @@ build
 client_secret_*.json
 # For additionally disabled files, look into css/.gitignore, js/.gitignore,
 # logs/.gitignore
-*.log
-/warnings_whitelist_file
-mail-credentials.json
+yarn-error.log
