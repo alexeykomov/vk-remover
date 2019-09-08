@@ -6,10 +6,10 @@
   "directories": {},
   "private": true,
   "scripts": {
-    "build": "jade index.jade && postcss css/input.css > target/output.css && npm run compile",
+    "build": "jade index.jade -P && postcss css/input.css > target/output.css && npm run compile",
     "build-prod": "jade index.jade && npm run compile-prod",
     "serve": "export CLASSPATH=$CLASSPATH:bin/react-closure-compiler.jar:bin/plovr.jar; java org.plovr.cli.Main serve plovr-config.json",
-    "compile": "java -jar bin/closure-compiler-v20190301.jar --js=src/**.js --js_output_file='target/output-compiled-ui.js' --charset=utf-8 --compilation_level=ADVANCED_OPTIMIZATIONS --summary_detail_level=3 --warning_level=VERBOSE --debug=true --source_map_format=V3 --language_in=ECMASCRIPT_NEXT --language_out=ECMASCRIPT5 --output_wrapper=';(function(){%output%})();' --formatting=PRETTY_PRINT --define='DEBUG=true'",
+    "compile": "java -jar bin/closure-compiler-v20190301.jar --js=src/**.js --js_output_file='target/output-compiled-ui.js' --charset=utf-8 --compilation_level=ADVANCED_OPTIMIZATIONS --summary_detail_level=3 --warning_level=VERBOSE --debug=true --source_map_format=V3 --language_in=ECMASCRIPT_NEXT --language_out=ECMASCRIPT5 --output_wrapper=';(function(){%output%})();' --formatting=PRETTY_PRINT --define='DEBUG=true' --externs externs/externs.js",
     "compile-prod": "java -jar bin/closure-compiler-v20190301.jar --js=src/**.js --js_output_file='target/output-compiled-ui.js' --charset=utf-8 --compilation_level=ADVANCED_OPTIMIZATIONS --summary_detail_level=3 --warning_level=VERBOSE --source_map_format=V3 --language_in=ECMASCRIPT_NEXT --language_out=ECMASCRIPT5 --output_wrapper=';(function(){%output%})();' --define='DEBUG=false'"
   },
   "keywords": [

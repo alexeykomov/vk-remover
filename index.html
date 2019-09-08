@@ -1,1 +1,35 @@
-<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="viewport" content="initial-scale=1.0, width=device-width"><meta name="theme-color" content="#f6f6f6"><title>Utility to remove subscribers and outgoing requests</title><link rel="stylesheet" href="target/output.css"></head><body><header><h3 class="name-title">Alexey Komov</h3><button>Login in VK</button></header><main></main><script src="target/output-compiled-ui.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta name="theme-color" content="#f6f6f6">
+    <title>VK remover</title>
+    <link rel="stylesheet" href="target/output.css">
+  </head>
+  <body>
+    <div id="vk_api_transport"></div>
+    <script>
+      window.vkAsyncInit = function () {
+        VK.init({
+          apiId: 7127809
+        });
+      };
+      
+      setTimeout(function () {
+        var el = document.createElement("script");
+        el.type = "text/javascript";
+        el.src = "https://vk.com/js/api/openapi.js?162";
+        el.async = true;
+        document.getElementById("vk_api_transport").appendChild(el);
+      }, 0);
+    </script>
+    <header>
+      <h3 class="name-title">Alexey Komov</h3>
+    </header><a id="login-button" href="https://oauth.vk.com/authorize?client_id=7127809&amp;display=popup&amp;redirect_uri=http://alexeykomov.github.io/vk-remover/&amp;scope=friends&amp;response_type=token&amp;v=5.101&amp;state=123456">Login with VK</a>
+    <main></main>
+    <script src="target/output-compiled-ui.js"></script>
+    <script src="https://vk.com/js/api/openapi.js?162" type="text/javascript"></script>
+  </body>
+</html>
