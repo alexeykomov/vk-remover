@@ -10,27 +10,12 @@ html(lang='en')
       VK remover
     link(rel='stylesheet', href='target/output.css')
   body
-    div#vk_api_transport
-    script.
-      window.vkAsyncInit = function () {
-        VK.init({
-          apiId: 7127809
-        });
-      };
-
-      setTimeout(function () {
-        var el = document.createElement("script");
-        el.type = "text/javascript";
-        el.src = "https://vk.com/js/api/openapi.js?162";
-        el.async = true;
-        document.getElementById("vk_api_transport").appendChild(el);
-      }, 0);
     header
       h3.name-title.
         Alexey Komov
     a#login-button(href='https://oauth.vk.com/authorize?client_id=7127809&' +
       'display=popup&' +
-      'redirect_uri=http://alexeykomov.github.io/vk-remover/&' +
+      'redirect_uri=https://alexeykomov.me/vk-remover&' +
       'scope=friends&' +
       'response_type=token&' +
       'v=5.101&' +
@@ -38,5 +23,4 @@ html(lang='en')
         Login with VK
     main
     script(src='target/output-compiled-ui.js')
-    script(src='https://vk.com/js/api/openapi.js?162', type='text/javascript')
 
