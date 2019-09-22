@@ -13,12 +13,12 @@ const onLoad = async () => {
   if (userId && accessToken) {
     const requestUrl = `https://api.vk.com/method/friends.getRequests?
     access_token=${accessToken}
-    user_ids=${userId}
+    &user_ids=${userId}
     &offset=0
     &count=1000
     &out=1
-    &count=${accessToken}
-    &v=5.101`.replace(/\s/, '');
+    &v=5.101`.replace(/\s+/g, '');
+    console.log('requestUrl: ', requestUrl);
     const response = await fetch(requestUrl, {
       credentials: 'include',
       method: 'GET',

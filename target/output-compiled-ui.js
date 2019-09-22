@@ -792,7 +792,8 @@ function $JSCompiler_StaticMethods_goog_Uri_QueryData_prototype$setIgnoreCase$$(
         $$jscomp$generator$context$$.$b$ = 0;
         return;
       }
-      $requestUrl$$ = ("https://api.vk.com/method/friends.getRequests?\n    access_token=" + $accessToken$$ + "\n    user_ids=" + $userId$$ + "\n    &offset=0\n    &count=1000\n    &out=1\n    &count=" + $accessToken$$ + "\n    &v=5.101").replace(/\s/, "");
+      $requestUrl$$ = ("https://api.vk.com/method/friends.getRequests?\n    access_token=" + $accessToken$$ + "\n    &user_ids=" + $userId$$ + "\n    &offset=0\n    &count=1000\n    &out=1\n    &v=5.101").replace(/\s+/g, "");
+      console.log("requestUrl: ", $requestUrl$$);
       $uri$jscomp$inline_66_value$jscomp$inline_73$$ = fetch($requestUrl$$, {credentials:"include", method:"GET", mode:"cors"});
       $$jscomp$generator$context$$.$b$ = 3;
       return {value:$uri$jscomp$inline_66_value$jscomp$inline_73$$};
