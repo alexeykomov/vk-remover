@@ -19,17 +19,24 @@ const onLoad = async () => {
     &out=1
     &v=5.101`.replace(/\s+/g, '');
     console.log('requestUrl: ', requestUrl);
-    const response = await fetch(requestUrl, {
-      credentials: 'include',
-      method: 'GET',
-      mode: 'cors'
-    });
-    if (response.ok) {
-      const res = response.json();
-      console.log('res: ', res);
-    }
+    const res = await jsonpRequest(requestUrl);
+    console.log(res);
   }
 };
 
-window.addEventListener('load', onLoad, false);
+const jsonpRequest = async (requestUrl) => {
+  return new Promise((res, rej) => {
+    const script = document.createElement('script');
+    const scriptId = String(goog.getUid(script));
+    script.id = scriptId;
+    window[`callbackFunc${scriptId}`] = (reply) => {
+      delete window[`callbackFunc${scriptId}`];
+      document.body.removeChild(document.getElementById(scriptId));
+      res(reply);
+    }
+    script.src = `${requestUrl}&callback=callbackFunc${scriptId}`;
+    document.body.appendChild(script);
+  })
+}
 
+window.addEventListener('load', onLoad, false);

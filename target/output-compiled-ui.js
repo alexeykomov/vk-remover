@@ -411,6 +411,7 @@ function $goog$typeOf$$($value$jscomp$101$$) {
   }
   return $s$jscomp$6$$;
 }
+var $goog$UID_PROPERTY_$$ = "closure_uid_" + (1e9 * Math.random() >>> 0), $goog$uidCounter_$$ = 0;
 function $goog$inherits$$($childCtor$$, $parentCtor$$) {
   function $tempCtor$$() {
   }
@@ -776,8 +777,23 @@ function $JSCompiler_StaticMethods_goog_Uri_QueryData_prototype$setIgnoreCase$$(
   }, $JSCompiler_StaticMethods_goog_Uri_QueryData_prototype$setIgnoreCase$self$$));
   $JSCompiler_StaticMethods_goog_Uri_QueryData_prototype$setIgnoreCase$self$$.$f$ = $ignoreCase$jscomp$1$$;
 }
-;window.addEventListener("load", function() {
-  var $url$jscomp$58$$, $parsedUrl$$, $userId$$, $accessToken$$, $requestUrl$$, $response$jscomp$2$$, $res$jscomp$7$$;
+;function $jsonpRequest$$($requestUrl$jscomp$1$$) {
+  return $$jscomp$asyncExecutePromiseGenerator$$(new $$jscomp$generator$Generator_$$(new $$jscomp$generator$Engine_$$(function($$jscomp$generator$context$jscomp$1$$) {
+    return $$jscomp$generator$context$jscomp$1$$.return(new Promise(function($res$jscomp$8$$) {
+      var $script$jscomp$14$$ = document.createElement("script"), $scriptId$$ = String($script$jscomp$14$$[$goog$UID_PROPERTY_$$] || ($script$jscomp$14$$[$goog$UID_PROPERTY_$$] = ++$goog$uidCounter_$$));
+      $script$jscomp$14$$.id = $scriptId$$;
+      window["callbackFunc" + $scriptId$$] = function $window$callbackFunc$$scriptId$$$($reply$$) {
+        delete window["callbackFunc" + $scriptId$$];
+        document.body.removeChild(document.getElementById($scriptId$$));
+        $res$jscomp$8$$($reply$$);
+      };
+      $script$jscomp$14$$.src = $requestUrl$jscomp$1$$ + "&callback=callbackFunc" + $scriptId$$;
+      document.body.appendChild($script$jscomp$14$$);
+    }));
+  })));
+}
+window.addEventListener("load", function() {
+  var $url$jscomp$58$$, $parsedUrl$$, $userId$$, $accessToken$$, $requestUrl$$, $res$jscomp$7$$;
   return $$jscomp$asyncExecutePromiseGenerator$$(new $$jscomp$generator$Generator_$$(new $$jscomp$generator$Engine_$$(function($$jscomp$generator$context$$) {
     if (1 == $$jscomp$generator$context$$.$b$) {
       $url$jscomp$58$$ = window.location.href;
@@ -794,12 +810,12 @@ function $JSCompiler_StaticMethods_goog_Uri_QueryData_prototype$setIgnoreCase$$(
       }
       $requestUrl$$ = ("https://api.vk.com/method/friends.getRequests?\n    access_token=" + $accessToken$$ + "\n    &user_ids=" + $userId$$ + "\n    &offset=0\n    &count=1000\n    &out=1\n    &v=5.101").replace(/\s+/g, "");
       console.log("requestUrl: ", $requestUrl$$);
-      $uri$jscomp$inline_66_value$jscomp$inline_73$$ = fetch($requestUrl$$, {credentials:"include", method:"GET", mode:"cors"});
+      $uri$jscomp$inline_66_value$jscomp$inline_73$$ = $jsonpRequest$$($requestUrl$$);
       $$jscomp$generator$context$$.$b$ = 3;
       return {value:$uri$jscomp$inline_66_value$jscomp$inline_73$$};
     }
-    $response$jscomp$2$$ = $$jscomp$generator$context$$.$h$;
-    $response$jscomp$2$$.ok && ($res$jscomp$7$$ = $response$jscomp$2$$.json(), console.log("res: ", $res$jscomp$7$$));
+    $res$jscomp$7$$ = $$jscomp$generator$context$$.$h$;
+    console.log($res$jscomp$7$$);
     $$jscomp$generator$context$$.$b$ = 0;
   })));
 }, !1);
