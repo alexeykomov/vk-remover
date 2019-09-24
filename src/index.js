@@ -33,7 +33,7 @@ const jsonpRequest = async (requestUrl) => {
       delete window[`callbackFunc${scriptId}`];
       document.body.removeChild(document.getElementById(scriptId));
       res(reply);
-    }
+    };
     script.src = `${requestUrl}&callback=callbackFunc${scriptId}`;
     document.body.appendChild(script);
   })
